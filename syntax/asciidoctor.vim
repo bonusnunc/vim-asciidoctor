@@ -95,7 +95,7 @@ if get(g:, 'asciidoctor_syntax_conceal', 0)
     syn region asciidoctorAnchor matchgroup=Conceal start="<<\%([^>]\{-},\s*\)\?\ze.\{-}>>" end=">>" concealends oneline
 
     syn region asciidoctorBold matchgroup=Conceal start=/\m\*\*/ end=/\*\*/ contains=@Spell concealends oneline
-    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^* ].\{-}\S/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
+    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^* ].\(.\|\n\(\s*\n\)\@!\)\{-}\S/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorItalic matchgroup=Conceal start=/\m__/ end=/__/ contains=@Spell concealends oneline
     syn region asciidoctorItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)_\ze[^_ ].\{-}\S/ end=/_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
@@ -112,7 +112,7 @@ else
 
     syn match asciidoctorAnchor "<<.\{-}>>"
 
-    syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^* ].\{-}\S\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
+    syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^* ].\(.\|\n\(\s*\n\)\@!\)\{-}\S\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     " single char *b* bold
     syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^* ]\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     syn match asciidoctorBold /\*\*\S.\{-}\*\*/ contains=@Spell
