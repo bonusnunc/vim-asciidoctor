@@ -94,14 +94,16 @@ if get(g:, 'asciidoctor_syntax_conceal', 0)
 
     syn region asciidoctorAnchor matchgroup=Conceal start="<<\%([^>]\{-},\s*\)\?\ze.\{-}>>" end=">>" concealends oneline
 
+    " TODO: Fix single character not matched. E.g.: *b*. \S seems to be the
+    " issue
     syn region asciidoctorBold matchgroup=Conceal start=/\m\*\*/ end=/\*\*/ contains=@Spell concealends oneline
-    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^*_ ].\(.\|\n\(\s*\n\)\@!\)\{-}/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
+    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^*_ ]\(.\|\n\(\s*\n\)\@!\)\{-}\S\(^\)\@<!\*/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorItalic matchgroup=Conceal start=/\m__/ end=/__/ contains=@Spell concealends oneline
-    syn region asciidoctorItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)_\ze[^_ ].\{-}\S/ end=/_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
+    syn region asciidoctorItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)_\ze[^*_ ]\(.\|\n\(\s*\n\)\@!\)\{-}\S\(^\)\@<!_/ end=/_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\*\*_/ end=/_\*\*/ contains=@Spell concealends oneline
-    syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*_\ze[^*_ ].\{-}\S/ end=/_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
+    syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*_\ze[^*_ ]\(.\|\n\(\s*\n\)\@!\)\{-}\S\(^\)\@<!_\*/ end=/_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorCode matchgroup=Conceal start=/\m``/ end=/``/ contains=@Spell concealends oneline
     syn region asciidoctorCode matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)`\ze[^` ].\{-}\S/ end=/`\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
