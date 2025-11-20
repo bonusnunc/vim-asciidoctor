@@ -97,13 +97,13 @@ if get(g:, 'asciidoctor_syntax_conceal', 0)
     " TODO: Fix single character not matched. E.g.: *b*. \S seems to be the
     " issue
     syn region asciidoctorBold matchgroup=Conceal start=/\m\*\*/ end=/\*\*/ contains=@Spell concealends oneline
-    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S\(^\)\@<!\*/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
+    syn region asciidoctorBold matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S\(^\)\@<!\*/ end=/\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorItalic matchgroup=Conceal start=/\m__/ end=/__/ contains=@Spell concealends oneline
-    syn region asciidoctorItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)_\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S\(^\)\@<!_/ end=/_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
+    syn region asciidoctorItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)_\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S\(^\)\@<!_/ end=/_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\*\*_/ end=/_\*\*/ contains=@Spell concealends oneline
-    syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*_\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S\(^\)\@<!_\*/ end=/_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
+    syn region asciidoctorBoldItalic matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)\*_\ze[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S\(^\)\@<!_\*/ end=/_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends
 
     syn region asciidoctorCode matchgroup=Conceal start=/\m``/ end=/``/ contains=@Spell concealends oneline
     syn region asciidoctorCode matchgroup=Conceal start=/\m\%(^\|[[:punct:][:space:]]\@<=\)`\ze[^` ].\{-}\S/ end=/`\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell concealends oneline
@@ -114,17 +114,17 @@ else
 
     syn match asciidoctorAnchor "<<.\{-}>>"
 
-    syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
+    syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     " single char *b* bold
     syn match asciidoctorBold /\%(^\|[[:punct:][:space:]]\@<=\)\*[^ ]\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     syn match asciidoctorBold /\*\*\S.\{-}\*\*/ contains=@Spell
 
-    syn match asciidoctorItalic /\%(^\|[[:punct:][:space:]]\@<=\)_[^_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
+    syn match asciidoctorItalic /\%(^\|[[:punct:][:space:]]\@<=\)_[^_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     " single char _b_ italic
     syn match asciidoctorItalic /\%(^\|[[:punct:][:space:]]\@<=\)_[^_ ]_\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     syn match asciidoctorItalic /__\S.\{-}__/ contains=@Spell
 
-    syn match asciidoctorBoldItalic /\%(^\|[[:punct:][:space:]]\@<=\)\*_[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.]\)\)\@!\)\{-}\S_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
+    syn match asciidoctorBoldItalic /\%(^\|[[:punct:][:space:]]\@<=\)\*_[^*_ ]\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     " single char *_b_* bold+italic
     syn match asciidoctorBoldItalic /\%(^\|[[:punct:][:space:]]\@<=\)\*_[^*_ ]_\*\%([[:punct:][:space:]]\@=\|$\)/ contains=@Spell
     syn match asciidoctorBoldItalic /\*\*_\S.\{-}_\*\*/ contains=@Spell
