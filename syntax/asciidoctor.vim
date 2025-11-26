@@ -321,8 +321,8 @@ else
 endif
 
 hi def asciidoctorHighlight                 guibg=gold1 ctermbg=3 term=reverse
-hi def asciidoctorUnderline                gui=underline cterm=underline term=reverse
-hi def asciidoctorStrikethrough             guibg=DimGray ctermbg=5 term=reverse
+hi def asciidoctorUnderline                 gui=underline cterm=underline term=reverse
+hi def asciidoctorStrikethrough             gui=strikethrough cterm=strikethrough"guibg=DimGray ctermbg=5 term=reverse
 
 
 hi def link asciidoctorDefList               asciidoctorBold
