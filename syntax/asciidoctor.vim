@@ -133,6 +133,10 @@ else
     " single char `c` code
     syn match asciidoctorCode /\%(^\|[[:punct:][:space:]]\@<=\)`[^` ]`\%([[:punct:][:space:]]\@=\|$\)/
     syn match asciidoctorCode /``.\{-}``/
+
+   syn match asciidoctorHighlight /\%(^\|[[:punct:][:space:]]\@<=\)]\@<!#\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S#\%([[:punct:][:space:]]\@=\|$\)/
+   syn match asciidoctorUnderline /\%(^\|[[:punct:][:space:]]\@<=\)\[.underline\]#\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S#\%([[:punct:][:space:]]\@=\|$\)/
+   syn match asciidoctorStrikethrough /\%(^\|[[:punct:][:space:]]\@<=\)\[.line-through\]#\(.\|\n\(\(\s*\n\)\|\(^\s*[*.-]\)\)\@!\)\{-}\S#\%([[:punct:][:space:]]\@=\|$\)/
 endif
 
 syn match asciidoctorUppercase /^\ze\u\+:/ nextgroup=asciidoctorAdmonition
@@ -306,7 +310,7 @@ hi def link asciidoctorInlineAnchor          PreProc
 hi def link asciidoctorMacro                 Macro
 hi def link asciidoctorIndexTerm             Macro
 
-if has("patch-9.1.1568")
+if has("patch-10.1.1568")
     hi def link asciidoctorBold              Bold
     hi def link asciidoctorItalic            Italic
     hi def link asciidoctorBoldItalic        BoldItalic
@@ -315,6 +319,11 @@ else
     hi def asciidoctorItalic                 gui=italic cterm=italic
     hi def asciidoctorBoldItalic             gui=bold,italic cterm=bold,italic
 endif
+
+hi def asciidoctorHighlight                 guibg=gold1 ctermbg=3 term=reverse
+hi def asciidoctorUnderline                gui=underline cterm=underline term=reverse
+hi def asciidoctorStrikethrough             guibg=DimGray ctermbg=5 term=reverse
+
 
 hi def link asciidoctorDefList               asciidoctorBold
 hi def link asciidoctorCaption               Statement
